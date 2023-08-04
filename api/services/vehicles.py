@@ -1,5 +1,5 @@
-from api.repositories.vehicles import VehiclesRepository
-from api.models.vehicles import VehiclesUpdateModel
+from repositories.vehicles import VehiclesRepository
+from models.vehicles import VehiclesUpdateModel
 
 
 class VehiclesService():

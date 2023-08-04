@@ -2,7 +2,7 @@ import os
 from typing import List
 from motor.motor_asyncio import AsyncIOMotorClient
 from pymongo.collection import ReturnDocument
-from api.exceptions.base import NotFoundError
+from exceptions.base import NotFoundError
 from bson import ObjectId
 
 

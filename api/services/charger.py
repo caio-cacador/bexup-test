@@ -1,8 +1,7 @@
 import asyncio
 import logging
-import os
-from api.connections.vehicles import VehiclesConnection
-from api.connections.message_broker import (
+from connections.vehicles import VehiclesConnection
+from connections.message_broker import (
     MessageBrokerConnection,
     CAR_QUEUE_NAME,
     TRUCK_QUEUE_NAME,

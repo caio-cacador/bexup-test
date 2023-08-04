@@ -14,7 +14,6 @@ TRUCK_QUEUE_NAME=os.getenv('TRUCK_QUEUE_NAME')
 MOTORCYCLE_QUEUE_NAME=os.getenv('MOTORCYCLE_QUEUE_NAME')
 
 
-
 def main():
     message_broken = MessageBrokerConsumerConnection(
         channels=[

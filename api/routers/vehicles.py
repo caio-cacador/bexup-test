@@ -2,10 +2,10 @@ from typing import List
 from fastapi import APIRouter, Path
 from fastapi.responses import JSONResponse
 from http import HTTPStatus
-from api.services.charger import ChargerService
-from api.services.vehicles import VehiclesService
-from api.exceptions.base import NotFoundError
-from api.models.vehicles import (
+from services.charger import ChargerService
+from services.vehicles import VehiclesService
+from exceptions.base import NotFoundError
+from models.vehicles import (
     VehiclesBrandsResponseModel,
     VehiclesInfoResponseModel,
     VehiclesUpdateModel,

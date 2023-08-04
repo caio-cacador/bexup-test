@@ -9,7 +9,7 @@ services:
     networks:
       - bexup-network
 
-  mongo:
+  mongodb:
     image: mongo
     ports:
       - "27017:27017"
@@ -21,15 +21,35 @@ services:
     networks:
       - bexup-network
 
-  # api:
-  #   ports:
-  #     - "8000:8000"
-  #   networks:
-  #     - bexup-network
+  api:
+    build:
+     ./api
+    ports:
+      - "8000:8000"
+    environment:
+      MONGO_DB_URL: ${MONGO_DB_URL}
+      MONGO_DB_DATABASE: ${MONGO_DB_DATABASE}
+      MONGO_DB_COLLECTION: ${MONGO_DB_COLLECTION}
+      MESSAGE_BROKER_URL: ${MESSAGE_BROKER_URL}
+      CAR_QUEUE_NAME: ${CAR_QUEUE_NAME}
+      TRUCK_QUEUE_NAME: ${TRUCK_QUEUE_NAME}
+      MOTORCYCLE_QUEUE_NAME: ${MOTORCYCLE_QUEUE_NAME}
+    networks:
+      - bexup-network
 
-  # consumer:
-  #   networks:
-  #     - bexup-network
+  consumer:
+    build:
+     ./consumer
+    environment:
+      MONGO_DB_URL: ${MONGO_DB_URL}
+      MONGO_DB_DATABASE: ${MONGO_DB_DATABASE}
+      MONGO_DB_COLLECTION: ${MONGO_DB_COLLECTION}
+      MESSAGE_BROKER_URL: ${MESSAGE_BROKER_URL}
+      CAR_QUEUE_NAME: ${CAR_QUEUE_NAME}
+      TRUCK_QUEUE_NAME: ${TRUCK_QUEUE_NAME}
+      MOTORCYCLE_QUEUE_NAME: ${MOTORCYCLE_QUEUE_NAME}
+    networks:
+      - bexup-network
 
 networks:
   bexup-network:

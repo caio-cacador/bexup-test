@@ -5,11 +5,12 @@ import pika
 import os
 
 from typing import Callable
+from exceptions.vehicles_connection import ServiceUnavailableError
 from exceptions.message_broker import NackException, AckException
 
 
 LOGGER = logging.getLogger("sLogger")
-CONSUMER_RECONNECT_DELAY = 120
+CONSUMER_RECONNECT_DELAY = 10
 
 
 class MessageBrokerConsumerConnection:
@@ -82,6 +83,10 @@ class Queue:
             LOGGER.error(traceback.format_exc())
             LOGGER.critical("AckException - Work done.")
             channel.basic_ack(delivery_tag=method_frame.delivery_tag)
+
+        except ServiceUnavailableError as error:
+            LOGGER.critical(f"Service Unavailable Error - Resending Message to Queue: {error}")
+            channel.basic_nack(delivery_tag=method_frame.delivery_tag)
 
         except Exception as error:
             LOGGER.error(traceback.format_exc())

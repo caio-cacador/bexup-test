@@ -26,6 +26,7 @@ class ChargerService():
             Exception: raise if some unknown error happen
         """
         brand_code, brand_name = self.unpack_message(message_body)
+        
         result = self.vehicles_con.get_car_models_by_brand(brand_code)
         self.vehicles_repo.save(
             vehicle_type='car',

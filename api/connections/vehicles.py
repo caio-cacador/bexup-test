@@ -1,7 +1,7 @@
 import httpx
 from http import HTTPStatus
 from typing import List
-from api.exceptions.base import ServiceUnavailableError
+from exceptions.base import ServiceUnavailableError
 
 
 class VehiclesConnection:

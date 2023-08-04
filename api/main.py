@@ -1,6 +1,6 @@
 import logging
 from fastapi import FastAPI
-from api.routers import vehicles
+from routers import vehicles
 
 logging.getLogger("uvicorn.error")
 
