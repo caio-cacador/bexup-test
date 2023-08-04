@@ -4,8 +4,6 @@ from typing import List
 from api.exceptions.base import ServiceUnavailableError
 
 
-
-
 class VehiclesConnection:
     
     def __init__(self) -> None:
