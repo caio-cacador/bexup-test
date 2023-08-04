@@ -1,13 +1,15 @@
+import logging
 from fastapi import FastAPI
-from api.routers import cars
+from api.routers import vehicles
 
+logging.getLogger("uvicorn.error")
 
 app = FastAPI(
     title="Test for BexUp", 
     openapi_url="/openapi.json"
 )
 
-app.include_router(cars.router, prefix='/api')
+app.include_router(vehicles.router, prefix='/api')
 
 if __name__ == "__main__":
     import uvicorn
