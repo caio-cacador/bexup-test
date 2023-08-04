@@ -3,6 +3,10 @@ from fastapi.responses import JSONResponse
 from http import HTTPStatus
 
 
+class NotFoundError(Exception):
+    pass
+
+
 class ServiceUnavailableError(Exception):
     pass
 
